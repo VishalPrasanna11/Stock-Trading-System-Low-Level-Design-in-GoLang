@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/VishalPrasanna11/Zerodha-Low-Level-Design-in-GoLang/stockbroker"
+	"github.com/VishalPrasanna11/Stock-Trading-System-Low-Level-Design-in-GoLang/stockbroker"
 )
 
 func main() {
