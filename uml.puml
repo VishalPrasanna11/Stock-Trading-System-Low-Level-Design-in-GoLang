@@ -1,0 +1,95 @@
+@startuml
+
+' Class definitions
+class OrderManager {
+  -OrderValidator
+  -OrderExecutioner
+  +PlaceOrder(userId: string, order: Order)
+}
+
+class OrderValidator {
+  -userList: UserList
+  +ValidateOrder(userId: string, order: Order): bool
+}
+
+class OrderExecutioner {
+  -userList: UserList
+  +ExecuteOrder(order: Order, userId: string)
+}
+
+class User {
+  -userId: string
+  -funds: float64
+  -watchlist: Watchlist
+  -portfolio: Portfolio
+  +AddFunds(amount: float64)
+  +DeductFunds(amount: float64): bool
+  +ListStocks(): []STOCK
+  +AddStock(stock: STOCK)
+  +AddToWatchlist(stock: STOCK)
+}
+
+class Portfolio {
+  -stocks: map[string]STOCK
+  +AddStock(stock: STOCK)
+  +ListStocks(): []STOCK
+}
+
+class Watchlist {
+  -stocks: map[string]STOCK
+  +AddToWatchlist(stock: STOCK)
+  +RemoveFromWatchlist(stockName: string)
+  +ListWatchlist(): []STOCK
+}
+
+class UserList {
+  -users: map[string]*User
+  +GetUser(userId: string): *User
+  +AddUser(userId: string, user: *User)
+}
+
+class Order {
+  -orderId: int
+  -exchange: EXCHANGE_TYPE
+  -stock: *STOCK
+  -price: float64
+  -quantity: int
+  -orderType: Order_TYPE
+  -txnType: TXN_TYPE
+  -status: ORDER_STATUS
+  -order_time: time.Time
+  -totalPrice: float64
+  +GetTxnType(): TXN_TYPE
+  +GetTotalPrice(): float64
+}
+
+class STOCK {
+  -exchange: EXCHANGE_TYPE
+  -name: string
+  -price: float64
+}
+
+class StockInventory {
+  -stocks: map[string]STOCK
+  +AddStock(stock: STOCK)
+  +GetStock(name: string): (STOCK, bool)
+  +UpdateStock(name: string, newPrice: float64): bool
+  +ListStocks(): []STOCK
+}
+
+' Composition relationships (strong)
+OrderManager *-- OrderValidator
+OrderManager *-- OrderExecutioner
+User *-- Portfolio
+User *-- Watchlist
+Portfolio *-- "many" STOCK
+Watchlist *-- "many" STOCK
+UserList *-- "many" User
+StockInventory *-- "many" STOCK
+
+' Aggregation relationships (weak)
+Order o-- STOCK
+OrderExecutioner o-- UserList
+OrderValidator o-- UserList
+
+@enduml
