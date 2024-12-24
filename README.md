@@ -101,7 +101,6 @@ The system implements comprehensive error handling for:
 - Order validation
 Here's how you can structure the `README.md` file for your project to guide users on how to clone the repository, navigate to the project directory, and run the Go application:
 
-```markdown
 ## Prerequisites
 
 Before running the application, make sure you have the following installed:
