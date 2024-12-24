@@ -114,7 +114,7 @@ Before running the application, make sure you have the following installed:
 Start by cloning the project repository to your local machine. Open a terminal and run the following command:
 
 ```bash
-git clone https://github.com/VishalPrasanna11/Zerodha-Low-Level-Design-in-GoLang.git
+git clone https://github.com/VishalPrasanna11/Stock-Trading-System-Low-Level-Design-in-GoLang.git
 ```
 
 ### 2. Navigate to the Project Directory
@@ -122,7 +122,7 @@ git clone https://github.com/VishalPrasanna11/Zerodha-Low-Level-Design-in-GoLang
 Once the repository is cloned, navigate into the project directory:
 
 ```bash
-cd Zerodha-Low-Level-Design-in-GoLang
+cd Stock-Trading-System-Low-Level-Design-in-GoLang
 ```
 
 ### 3. Install Go Dependencies
